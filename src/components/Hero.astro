@@ -1,0 +1,128 @@
+<section class="hero">
+  <div class="hero__container container grid">
+    <div class="hero__data">
+      <img src="/images/hero-arrow.svg" alt="" class="hero__decoration-1" />
+      <img src="/images/hero-stars.svg" alt="" class="hero__decoration-2" />
+
+      <h1 class="hero__title">
+        Discover Furniture With<br />
+        High Quality Wood
+      </h1>
+
+      <p class="hero__description">
+        Pellentesque etiam blandit in tincidunt at donec. Eget ipsum dignissim
+        placerat nisi, adipiscing mauris non. Purus parturient viverra nunc,
+        tortor sit laoreet. Quam tincidunt aliquam adipiscing tempor.
+      </p>
+    </div>
+
+    <div class="hero__content">
+      <div class="hero__search">
+        <div class="hero__input">
+          <i class="ri-search-line"></i>
+          <input type="text" placeholder="Search property" />
+        </div>
+        <button class="search__button">Search</button>
+      </div>
+
+      <div class="hero__image">
+        <img src="/images/hero-image.png" class="hero__img" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero__container {
+    padding-top: 3.125rem;
+    row-gap: 1.875rem;
+  }
+
+  .hero__data {
+    position: relative;
+    text-align: center;
+  }
+
+  .hero__title {
+    color: var(--title-color);
+    font-size: var(--biggest-font-size);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero__description {
+    line-height: 21px;
+    font-family: var(--font-medium);
+  }
+
+  .hero__search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.875rem;
+    background-color: var(--body-color);
+    box-shadow: 0px 4px 80px 0px rgba(175, 173, 181, 0.2);
+    margin-bottom: 1.875rem;
+  }
+
+  .hero__input {
+    display: flex;
+    align-items: center;
+    column-gap: 0.75rem;
+  }
+
+  .hero__input i {
+    font-size: 1.5rem;
+  }
+
+  input {
+    font-size: 0.875rem;
+    font-family: var(--font-medium);
+    color: var(--text-color);
+  }
+
+  input::placeholder {
+    font-size: 0.875rem;
+    font-family: var(--font-medium);
+    color: var(--text-color);
+  }
+
+  .search__button {
+    padding: 0.675rem 1.625rem;
+    font-family: var(--font-bold);
+    color: #fff;
+    background-color: var(--first-color);
+  }
+
+  .hero__image {
+    position: relative;
+    widows: 327px;
+    height: 160px;
+  }
+
+  .hero__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero__decoration-1,
+  .hero__decoration-2 {
+    position: absolute;
+  }
+
+  .hero__decoration-1 {
+    width: 5.5rem;
+    transform: rotate(-10deg);
+    left: -1.8rem;
+    top: 0.4rem;
+  }
+
+  .hero__decoration-2 {
+    width: 24px;
+    top: 2rem;
+    right: 1.25rem;
+  }
+
+</style>
