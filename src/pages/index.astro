@@ -2,8 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import Hero from "../components/Hero.astro";
-import Benefits from "../components/Benefits.astro";
+import Hero from "../components/HeroSection.astro";
+import Benefits from "../components/BenefitsSection.astro";
+import ProductSection from "../components/ProductSection.astro";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -11,6 +12,7 @@ import Benefits from "../components/Benefits.astro";
 	<main>
 		<Hero />
 		<Benefits />
+		<ProductSection />
 	</main>
 	<Footer />
 </Layout>

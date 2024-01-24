@@ -52,7 +52,7 @@ const { title } = Astro.props;
 	--container-color: #F9F9F9;
 
     /* Typograph */
-    --body-font: Eudoxus-Bold;
+    --body-font: Eudoxus-Medium;
     --biggest-font-size: 1.625rem;
     --h1-font-size: 1.5rem;
     --h2-font-size: 1.25rem;
@@ -137,6 +137,21 @@ const { title } = Astro.props;
 
   .section {
     padding-block: 5rem 1.25rem;
+  }
+
+  .section__subtitle {
+	font-size: var(--normal-font-size);
+	color: var(--second-color);
+	font-family: var(--font-bold);
+	line-height: 130%;
+	margin-bottom: .5rem;
+  }
+
+  .section__title {
+	font-size: var(--h2-font-size);
+	color: var(--title-color);
+	margin-bottom: 1.125rem;
+	line-height: 130%;
   }
 
   .container {
