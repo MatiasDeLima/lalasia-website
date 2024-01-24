@@ -180,9 +180,11 @@
 <script>
   const carousel = document.querySelector(".product__content");
   const arrowBtns = document.querySelectorAll(".product__container .slide-button");
-  const firstCardWidht = carousel.querySelector(".product__card").offsetWidth;
+  const firstCard = carousel.querySelector(".product__card");
 
   let isDragging = false, startX, startScrollLeft;
+
+  const firstCardWidht = parseInt(window.getComputedStyle(firstCard).width)
 
   arrowBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
