@@ -1,17 +1,21 @@
-<section class="product section">
-  <div class="product__container container grid">
-    <div class="product__data">
-      <h3 class="section__subtitle">Product</h3>
-      <h2 class="section__title">Our Popular product</h2>
+<section class="product container section">
+  <div class="product__data">
+    <h3 class="section__subtitle">Product</h3>
+    <h2 class="section__title">Our Popular product</h2>
 
-      <p class="product__description">
-        Pellentesque etiam blandit in tincidunt at donec. Eget ipsum dignissim
-        placerat nisi, adipiscing mauris non purus parturient.
-      </p>
-    </div>
+    <p class="product__description">
+      Pellentesque etiam blandit in tincidunt at donec. Eget ipsum dignissim
+      placerat nisi, adipiscing mauris non purus parturient.
+    </p>
+  </div>
+
+  <div class="product__container grid">
+    <button class="slide-button" id="prev-slide">
+      <i class="ri-arrow-left-s-line"></i>
+    </button>
 
     <div class="product__content">
-      <article class="product__card">
+      <article class="product__card" draggable="false">
         <div class="product__card-image">
           <img src="/images/product-1.png" />
         </div>
@@ -25,7 +29,7 @@
         <h3 class="product__card-price">$63.47</h3>
       </article>
 
-      <article class="product__card">
+      <article class="product__card" draggable="false">
         <div class="product__card-image">
           <img src="/images/product-2.png" />
         </div>
@@ -39,7 +43,7 @@
         <h3 class="product__card-price">$63.47</h3>
       </article>
 
-      <article class="product__card">
+      <article class="product__card" draggable="false">
         <div class="product__card-image">
           <img src="/images/product-3.png" />
         </div>
@@ -53,7 +57,7 @@
         <h3 class="product__card-price">$63.47</h3>
       </article>
 
-      <article class="product__card">
+      <article class="product__card" draggable="false">
         <div class="product__card-image">
           <img src="/images/product-4.png" />
         </div>
@@ -67,16 +71,36 @@
         <h3 class="product__card-price">$63.47</h3>
       </article>
     </div>
+
+    <button class="slide-button" id="next-slide">
+      <i class="ri-arrow-right-s-line"></i>
+    </button>
   </div>
 </section>
 
 <style>
   .product__data {
     text-align: center;
+    margin-bottom: 1.875rem;
   }
 
   .product__container {
     row-gap: 1.875rem;
+    position: relative;
+  }
+
+  .product__content {
+    display: grid;
+    gap: 1.25rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+    grid-template-columns: repeat(4, 1fr);
+    scroll-behavior: smooth;
+  }
+
+  .product__content::-webkit-scrollbar {
+    display: none;
   }
 
   .product__description {
@@ -120,4 +144,73 @@
     font-size: var(--h3-font-size);
     line-height: 145%;
   }
+
+  .slide-button {
+    position: absolute;
+    top: 50%;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    background-color: var(--container-color);
+    font-size: 1.25rem;
+    color: var(--title-color);
+    transform: translateY(-50%);
+  }
+
+  #prev-slide {
+    left: -20px;
+  }
+
+  #next-slide {
+    right: -20px;
+  }
+
+  .product__content.dragging {
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
+
+  .product__content.dragging .product__card {
+    cursor: grab;
+    user-select: none;
+  }
 </style>
+
+<script>
+  const carousel = document.querySelector(".product__content");
+  const arrowBtns = document.querySelectorAll(".product__container .slide-button");
+  const firstCardWidht = carousel.querySelector(".product__card").offsetWidth;
+
+  let isDragging = false, startX, startScrollLeft;
+
+  arrowBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      // console.log(btn.id);
+      carousel.scrollLeft += btn.id === "prev-slide" ? -firstCardWidht : firstCardWidht;
+    })
+  })
+
+  const dragStart = (e) => {
+    isDragging = true;
+    carousel.classList.add("dragging")
+    startX = e.pageX;
+    startScrollLeft = carousel.scrollLeft;
+  }
+
+  const dragging = (e) => {
+    if(!isDragging) return;
+
+    carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
+  }
+
+  const dragTop = () => {
+    isDragging = false;
+    carousel.classList.remove("dragging")
+  }
+
+  carousel.addEventListener("mousedown", dragStart);
+  carousel.addEventListener("mousemove", dragging);
+  document.addEventListener("mouseup", dragTop);
+
+</script>
