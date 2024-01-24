@@ -1,22 +1,8 @@
 ---
-// const navMenu = document.getElementById("nav-menu"),
-//       navToggle = document.getElementById("nav-toggle"),
-//       navClose = document.getElementById("nav-close")
 
-// if(navToggle) {
-//     navToggle.addEventListener("click", () => {
-//         navMenu.classList.add("show-menu");
-//     })
-// }
-
-// if(navClose) {
-//     navClose.addEventListener("click", () => {
-//         navMenu.classList.remove("show-menu");
-//     })
-// }
 ---
 
-<header class="header" >
+<header class="header" id="header">
   <nav class="nav container">
     <a href="/" class="nav__logo">
       <img src="/images/logo-icon.svg" /> Lalasia
@@ -64,10 +50,11 @@
 
 <style>
   .header {
+    position: fixed;
     width: 100%;
     top: 0;
     left: 0;
-    background-color: transparent;
+    background-color: var(--body-color);
     z-index: var(--z-fixed);
     border: 1px solid var(--border-color);
   }
@@ -146,4 +133,42 @@
     top: 1.25rem;
     right: 1.25rem;
   }
+
+  .show-menu {
+    right: 0;
+  }
+
+  .scroll-header {
+    box-shadow: 0 4px 16px #e7e7e748;
+  }
 </style>
+
+<script>
+  /*############### SHOW MENU ###############*/
+  const navMenu = document.getElementById("nav-menu"),
+    navToggle = document.getElementById("nav-toggle"),
+    navClose = document.getElementById("nav-close");
+
+  if (navToggle) {
+    navToggle.addEventListener("click", () => {
+      navMenu.classList.add("show-menu");
+    });
+  }
+
+  if (navClose) {
+    navClose.addEventListener("click", () => {
+      navMenu.classList.remove("show-menu");
+    });
+  }
+
+  /*############### SCROLL HEADER ###############*/
+  const scrollHeader = () => {
+    const header = document.getElementById("header");
+
+    scrollY >= 50 ? header.classList.add("scroll-header")
+                  : header.classList.remove("scroll-header");
+  }
+
+  window.addEventListener("scroll", scrollHeader);
+
+</script>
